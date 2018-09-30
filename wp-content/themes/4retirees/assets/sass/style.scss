@@ -1,0 +1,578 @@
+/*
+Theme Name: 4Retirees Theme
+Theme URI: https://4retirees.com
+Author: Adam @ Bonafide Technology
+Author URI: https://4retirees.com
+Description: NuMedical WordPress Theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Template: oceanwp
+*/
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "_default";
+
+@mixin cabin($weight: 400) {
+	font-family: 'Cabin';
+	font-weight: 400;
+}
+
+$border: #c8cbdd;
+$grey: #797e9f;
+$grey_light: #f7f7f7;
+$purple: #5c6181;
+$purple_dark: #313551;
+$orange: #f57515;
+$blue: #52b7d0;
+$green: #76cfa2;
+$yellow: #f9dd1e;
+$yellow_dark: #f9ba1e;
+
+
+/******************************************************************************
+* HELPERS
+******************************************************************************/
+.text-orange {
+	color: $orange;
+}
+
+.text-700 {
+	font-weight: 700;
+}
+
+.text-underline {
+	text-decoration: underline;
+}
+
+.text-italic {
+	font-style: italic;
+}
+
+/******************************************************************************
+* BUTTONS
+******************************************************************************/
+.btn {
+	border-radius: 50px;
+	font-size: 18px;
+	line-height: 40px;
+	height: 40px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 0 38px;
+
+	&-orange {
+		background: $orange;
+		color: white;
+	}
+
+	&-purple {
+		background: $purple;
+		color: white;
+	}
+
+	&-yellow {
+		background: $yellow;
+		color: white;
+	}
+
+	&-green {
+		background: $green;
+		color: white;
+	}
+
+	&-blue {
+		background: $blue;
+		color: white;
+	}
+}
+
+/******************************************************************************
+* MODALS
+******************************************************************************/
+.modal-dialog {
+	min-height: calc(100vh - 60px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: auto;
+	max-width: 800px;
+	@media(max-width: 768px) {
+		min-height: calc(100vh - 20px);
+	}
+}
+
+.modal-title {
+    margin: 0 auto;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.modal-strip {
+	background: url('assets/images/brand-bar.png');
+	height: 10px;
+	width: 100%;
+}
+
+.modal-header {
+	background: $purple_dark;
+	padding-bottom: 40px;
+	padding-top: 40px;
+	text-align: center;
+}
+
+.modal-footer {
+	background: #f5f5f5;
+	justify-content: space-between;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+/******************************************************************************
+* MODAL: COMPATIBILITY CHECK
+******************************************************************************/
+#compatability-check-modal {
+	h5 {
+		color: white;
+		font-size: 29px;
+		font-weight: 700;
+		text-align: center;
+	}
+
+	.modal-close {
+		cursor: pointer;
+		position: absolute;
+		right: 15px;
+		top: 25px;
+
+		&:focus,
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
+	.modal-title {
+		> span {
+			color: $yellow;
+			text-decoration: underline;
+		}
+	}
+
+    .modal-body {
+        padding-bottom: 48px;
+        padding-top: 48px;
+    }
+
+    .question {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1;
+        margin-bottom: 48px;
+    }
+
+    .question-progress {
+        background: #e5e6ea;
+        border-radius: 50px;
+        height: 15px;
+        margin-bottom: 48px;
+        position: relative;
+        width: 100%;
+
+        .question-progress-advanced {
+            background: $blue;
+            border-radius: 50px;
+            height: 15px;
+            position: absolute;
+            top: 0;
+            width: 0%;
+        }
+    }
+
+	.question-actions {
+        button {
+			font-size: 20px;
+            width: 100%;
+            text-transform: capitalize;
+        }
+
+		.col {
+			&.selected {
+				text-align: center;
+
+				button {
+					background: $purple_dark;
+				}
+
+				span {
+					display: inline-block;
+					margin: 15px auto 0;
+				}
+			}
+		}
+	}
+
+	.action-back,
+	.action-next {
+        color: white;
+		font-size: 20px;
+    }
+
+    .action-next {
+        background: $yellow_dark;
+
+		i {
+			margin-left: 5px;
+		}
+    }
+
+	.action-back {
+		background: $purple;
+		float: left;
+
+		i {
+			margin-right: 5px;
+		}
+	}
+
+    .questions-progress {
+        font-size: 14px;
+    }
+
+	button {
+		height: 50px;
+		line-height: 50px;
+	}
+
+	// inner containers for other screens
+	.inner {
+		padding: 48px 30px;
+	}
+
+	.check-screen {
+
+		display: none;
+
+		.text-italic {
+			color: #5c6181;
+			font-size: 18px;
+		}
+
+		.inner {
+			padding: 30px;
+		}
+
+		.fa-check-circle {
+			font-size: 90px;
+			color: $green;
+			margin-bottom: 30px;
+		}
+
+		h6 {
+			font-size: 28px;
+			color: $green;
+			text-transform: uppercase;
+		}
+
+		p {
+			font-size: 20px;
+			font-weight: 700;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.check-inner-intro {
+			text-align: center;
+			max-width: 520px;
+			margin: 0 auto;
+		}
+
+		.check-inner-text {
+			font-size: 20px;
+		}
+
+		form {
+			max-width: 520px;
+			margin: 0 auto;
+		}
+
+		.form-control:not([type="checkbox"]) {
+			border-radius: 50px !important;
+			height: 60px;
+			line-height: 60px;
+			max-width: 100%;
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 0 20px;
+		}
+
+		.form-check-input {
+			top: 8px;
+		}
+
+		.form-check-label {
+			padding-left: 30px;
+		}
+
+		button {
+			height: 60px;
+			line-height: 1;
+			margin-top: 20px;
+			padding-bottom: 10px;
+			padding-top: 10px;
+			width: 100%;
+			font-size: 24px;
+		}
+	}
+
+	.check-buy,
+	.check-noop {
+		p,
+		.check-inner-text,
+		.check-inner-intro {
+			text-align: center;
+			max-width: 670px;
+			margin: 0 auto;
+		}
+
+		.check-inner-text {
+			p {
+				font-weight: 400;
+			}
+		}
+	}
+
+	.check-buy {
+		p,
+		.check-inner-text,
+		.check-inner-intro {
+			text-align: center;
+			max-width: 670px;
+			margin: 0 auto;
+		}
+
+		.results-left-top,
+		.results-right-top {
+			color: #797e9f;
+			font-size: 14px;
+			font-weight: 600;
+			text-align: center;
+			padding-bottom: 5px;
+		}
+
+		.results {
+			border: 1px solid #c8cbdd;
+			margin-bottom: 45px;
+		}
+
+		.results-left {
+			border-right: 1px solid #c8cbdd;
+		}
+
+		.results-right {
+			align-self: center;
+		}
+
+		.count-row,
+		.estimate-row {
+			table {
+				margin: 0;
+			}
+
+			td {
+				border: 0;
+			}
+		}
+
+		.count-left {
+			border: 0;
+			color: $blue;
+			font-size: 60px;
+			width: 30%;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.count-right {
+			border: 0;
+			font-size: 20px;
+			width: 70%;
+			vertical-align: middle;
+		}
+
+		.estimate-row {
+			td {
+				text-align: center;
+			}
+			.estimated {
+				font-size: 48px;
+				color: $yellow_dark;
+			}
+		}
+
+		.buy-now {
+			background: $orange;
+			font-weight: 700;
+			color: white;
+			font-size: 28px;
+			padding-top: 14px;
+			padding-bottom: 14px;
+			height: auto;
+			display: inline-block;
+			margin: 0 auto 20px;
+
+			span {
+				text-decoration: line-through;
+			}
+		}
+
+		.modal-payment-icons {
+			margin-bottom: 45px;
+		}
+	}
+
+	.check-share {
+		background: $purple_dark;
+
+		.inner {
+			padding: 30px;
+			text-align: center;
+		}
+		
+		.text {
+			max-width: 600px;
+			margin: 0 auto;
+			color: white;
+			font-size: 20px;
+			font-weight: 700;
+			
+			> span {
+				color: $yellow;
+				text-decoration: underline;
+			}
+		}
+
+		.check-share-icons {
+			margin: 25px auto 0;
+			max-width: 230px;
+
+			.col {
+				padding: 0;
+			}
+		}
+
+		.col-share {
+			color: white;
+			align-items: center;
+			align-self: center;
+			padding-right: 10px;
+			font-size: 12px;
+		}
+
+		.shell {
+			text-align: center;
+			align-items: center;
+			border-radius: 50px;
+			line-height: 35px;
+			margin: 0 auto;
+			height: 35px;
+			width: 35px;
+
+			i {
+				color: white;
+			}
+		}
+
+		.shell.one {
+			background: #4860ac;
+		}
+		.shell.two {
+			background: #4c9ad9;
+		}
+		.shell.three {
+			background: #962cc7;
+		}
+		.shell.four {
+			background: #0276b2;
+		}
+		.shell.five {
+			background: #3ccc87;
+		}
+	}
+}
+
+/******************************************************************************
+* MY ACCOUNT
+******************************************************************************/
+
+.account_oppotunity-list {
+	border-top: 1px solid $border;
+	margin-top: 40px;
+	padding-top: 40px;
+
+	.heading {
+		color: $green;
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+
+	th {
+		background: $grey_light;
+		border: 1px solid $border;
+		color: $grey;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 1;
+		text-align: center;
+		padding: 18px 10px;
+
+		&:last-child,
+		&:first-child {
+			padding: 15px 10px;
+		}
+	}
+
+	tbody {
+		border-left: 1px solid $border;
+		border-right: 1px solid $border;
+	}
+
+	td {
+		border-bottom: 1px solid $border;
+		font-size: 18px;
+		//padding: 18px 10px;
+		vertical-align: middle;
+		text-align: center;
+		//
+		//&:last-child,
+		//&:first-child {
+		//	padding: 15px 10px;
+		//}
+	}
+
+	.actions {
+		.col {
+			text-align: center;
+		}
+	}
+}
+
+.woocommerce-MyAccount-tabs {
+	a {
+		color: $purple_dark;
+	}
+}
+
+.woocommerce-MyAccount-navigation {
+	ul li a:before {
+		color: $purple_dark !important;
+	}
+
+	ul li a:hover:before {
+		color: $blue !important;
+	}
+}
